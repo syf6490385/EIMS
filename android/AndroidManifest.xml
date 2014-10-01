@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.csoft.employeemanager"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
+    </uses-permission>
+
+    <application
+        android:name="com.csoft.application.App"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="诚创员工管理"
+        android:theme="@style/AppBaseTheme" >
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="EmployeeManager" >
+        </activity>
+        <activity
+            android:name=".activity.DailyLogActivity"
+            android:label="@string/title_activity_daily_log" >
+        </activity>
+        <activity
+            android:name=".activity.DayoffActivity"
+            android:label="@string/title_activity_dayoff" >
+        </activity>
+
+        <receiver android:name=".receiver.WifiReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <!-- <action android:name="android.net.wifi.WIFI_STATE_CHANGED" /> -->
+                <!-- <action android:name="android.net.wifi.STATE_CHANGE" /> -->
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".activity.EmployeeManagerActivity"
+            android:label="@string/title_activity_employee_manager" >
+        </activity>
+        <activity
+            android:name="com.csoft.employeemanager.activity.LoginActivity"
+            android:label="@string/title_activity_login" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

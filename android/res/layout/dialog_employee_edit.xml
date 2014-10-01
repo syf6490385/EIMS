@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+     <EditText
+         android:id="@+id/emp_name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_alignParentTop="true"
+         android:layout_toRightOf="@+id/dialog_employee_name"
+         android:ems="10" >
+
+         <requestFocus />
+     </EditText>
+
+     <TextView
+         android:id="@+id/dialog_employee_name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true"
+         android:text="姓名:"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <TextView
+         android:id="@+id/dialog_employee_pwd_confirm"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/emp_pwd_confirm"
+         android:layout_alignBottom="@+id/emp_pwd_confirm"
+         android:layout_alignParentLeft="true"
+         android:text="密码确认:"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <TextView
+         android:id="@+id/dialog_employee_pwd"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/emp_pwd"
+         android:layout_alignBottom="@+id/emp_pwd"
+         android:layout_alignParentLeft="true"
+         android:text="密码:"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <TextView
+         android:id="@+id/dialog_employee_lv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/emp_lv"
+         android:layout_alignBottom="@+id/emp_lv"
+         android:layout_toLeftOf="@+id/emp_lv"
+         android:text="级别:"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <EditText
+         android:id="@+id/emp_lv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/emp_name"
+         android:layout_below="@+id/emp_name"
+         android:layout_toRightOf="@+id/dialog_employee_pwd"
+         android:ems="10" />
+
+     <EditText
+         android:id="@+id/emp_pwd"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/emp_lv"
+         android:layout_below="@+id/emp_lv"
+         android:layout_toRightOf="@+id/dialog_employee_pwd"
+         android:ems="10" />
+
+     <EditText
+         android:id="@+id/emp_pwd_confirm"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/emp_pwd"
+         android:layout_below="@+id/emp_pwd"
+         android:layout_toRightOf="@+id/dialog_employee_pwd_confirm"
+         android:ems="10" />
+
+     <EditText
+         android:id="@+id/emp_age"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/emp_pwd"
+         android:layout_alignRight="@+id/emp_pwd_confirm"
+         android:layout_below="@+id/emp_pwd_confirm"
+         android:ems="10" />
+
+     <Button
+         android:id="@+id/dialog_employee_confirm"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/emp_age"
+         android:layout_centerHorizontal="true"
+         android:text="提交" />
+
+     <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/emp_age"
+         android:layout_alignBottom="@+id/emp_age"
+         android:layout_alignParentLeft="true"
+         android:text="年龄:"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

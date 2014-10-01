@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.csoft.employeemanager.activity.MainActivity" >
+    <RelativeLayout android:id="@+id/toplayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:id="@+id/item_employee_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="2014年9月25日 星期四"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/dialog_employee_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="signup"
+            android:layout_centerVertical="true"
+            android:text="尚未签到" />
+
+    </RelativeLayout>
+
+ <com.csoft.calendarview.CalendarPickerView
+     android:id="@+id/calendar_view"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_below="@+id/toplayout"
+     android:background="#ffffff"
+     android:clipToPadding="false"
+     android:paddingBottom="16dp"
+     android:paddingLeft="16dp"
+     android:paddingRight="16dp"
+     android:scrollbarStyle="outsideOverlay" />
+
+</RelativeLayout>

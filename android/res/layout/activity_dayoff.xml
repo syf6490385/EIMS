@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.csoft.employeemanager.activity.DayoffActivity" >
+    <RelativeLayout android:id="@+id/top_dayoff"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true">
+
+        <Button
+            android:id="@+id/dialog_employee_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="提交请假" />
+
+        <EditText
+            android:id="@+id/emp_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dialog_employee_confirm"
+            android:layout_alignBottom="@+id/dialog_employee_confirm"
+            android:layout_alignParentLeft="true"
+            android:ems="10"
+            android:hint="请假事项写在这里"
+            android:inputType="textMultiLine" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/top_dayoff" >
+
+        <TextView
+            android:id="@+id/item_employee_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="请假记录"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_employee_name"
+            android:layout_centerHorizontal="true" >
+
+        </ListView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
