@@ -3,7 +3,7 @@
  */
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
-//mongoose.connect('mongodb://127.0.0.1/employee');
+
 var DailylogScheme=new Schema({
     content:String,
     selfrate:Number,//1-5星 级

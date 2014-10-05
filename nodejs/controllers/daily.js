@@ -1,7 +1,7 @@
 /**
  * Created by 孙艺峰 on 2014/9/29 0029.
  */
-var dailyDao=require('../model/dailylog');
+var dailyDao=require('../models/dailylog');
 function add(req,res)
 {
     var userid=req.query.userid;

@@ -1,7 +1,7 @@
 /**
  * Created by 孙艺峰 on 2014/9/30 0030.
  */
-var signDao=require('../model/Sign');
+var signDao=require('../models/Sign');
 function add(req,res)
 {
     var userid=req.query.userid;

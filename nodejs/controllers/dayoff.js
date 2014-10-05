@@ -1,7 +1,7 @@
 /**
  * Created by 孙艺峰 on 2014/9/30 0030.
  */
-var dayoffDao=require('../model/Dayoff');
+var dayoffDao=require('../models/Dayoff');
 function add(req,res)
 {
     var userid=req.query.userid;

@@ -4,7 +4,7 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var userDao=require('./User');
-var moment=require('./moment');
+var moment=require('../utility/moment');
 var SignSchema=new Schema({
     userid:String,
     username:String,

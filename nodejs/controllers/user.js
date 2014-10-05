@@ -1,7 +1,7 @@
 /**到百度首页
  * Created by 孙艺峰 on 2014/9/28 0028.
  */
-var userDao=require('../model/User');
+var userDao=require('../models/User');
 function list(req,res)
 {
     userDao.list(function(err,docs)
