@@ -18,7 +18,7 @@ require('./dayoff');
 require('./sign');
 require('./user');
 
-exports.DailyLog = mongoose.model('DailyLog');
+exports.Dailylog = mongoose.model('Dailylog');
 exports.User = mongoose.model('User');
 exports.Dayoff = mongoose.model('Dayoff');
 exports.Sign = mongoose.model('Sign');

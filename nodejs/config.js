@@ -10,8 +10,8 @@ var config = {
     description: 'EIMS is a simple employee system',
     version: pkg.version,
 
-    db: 'mongodb://127.0.0.1/employee',
-    db_name: 'employee',
+    db: 'mongodb://127.0.0.1/EIMS',
+    db_name: 'EIMS',
     port: 3000
 };
 
