@@ -1,10 +1,10 @@
 /**
  * Created by 孙艺峰 on 2014/9/28 0028.
  */
-var mongoose=require('mongoose');
-var Schema=mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var UserScheme=new Schema({
+var UserScheme = new Schema({
     name:String,
     age:Number,
     pwd:String,

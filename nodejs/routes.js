@@ -2,11 +2,10 @@
  * Created by 孙艺峰 on 2014/9/28 0028.
  */
 
-var DailyFunction = require('./controllers/daily');
-var dayoffFunction = require('./controllers/dayoff');
-var signFunction = require('./controllers/sign');
-var userfunction = require('./controllers/user');
-
+var Daily = require('./controllers/daily');
+var Dayoff = require('./controllers/dayoff');
+var Sign = require('./controllers/sign');
+var User = require('./controllers/user');
 
 module.exports = function(app)
 {
@@ -17,14 +16,14 @@ module.exports = function(app)
     });
 
     //dailylog
-    app.get('/dailylog/add',DailyFunction.add);
-    app.get('/dailylog/reply',DailyFunction.reply);
-    app.get('/dailylog/list',DailyFunction.list);
+    app.get('/dailylog/add',Daily.add);
+    app.get('/dailylog/reply',Daily.reply);
+    app.get('/dailylog/list',Daily.list);
 
     //dayoff
-    app.get('/dayoff/add',dayoffFunction.add);
-    app.get('/dayoff/reply',dayoffFunction.reply);
-    app.get('/dayoff/list',dayoffFunction.list);
+    app.get('/dayoff/add',Dayoff.add);
+    app.get('/dayoff/reply',Dayoff.reply);
+    app.get('/dayoff/list',Dayoff.list);
 
     //search
     app.get('/search',function(req,res){
@@ -32,18 +31,18 @@ module.exports = function(app)
     });
 
     //sign
-    app.get('/sign/add',signFunction.add);
-    app.get('/sign/list',signFunction.list);
+    app.get('/sign/add',Sign.add);
+    app.get('/sign/list',Sign.list);
 
     //user
-    app.get('/user/add',userfunction.add);
-    app.get('/user/del',userfunction.del);
-    app.get('/user/edit',userfunction.edit);
-    app.get('/user/list',userfunction.list);
-    app.get('/user/login',userfunction.login);
-    app.get('/user/logout',userfunction.logout);
-    app.get('/user/sign',userfunction.sign);
-    app.get('/user/dayoff',userfunction.dayoff);
-    app.get('/user/dailylog',userfunction.dailylog);
-    app.get('/user/relly',userfunction.reply);
+    app.get('/user/add',User.add);
+    app.get('/user/del',User.del);
+    app.get('/user/edit',User.edit);
+    app.get('/user/list',User.list);
+    app.get('/user/login',User.login);
+    app.get('/user/logout',User.logout);
+    app.get('/user/sign',User.sign);
+    app.get('/user/dayoff',User.dayoff);
+    app.get('/user/dailylog',User.dailylog);
+    app.get('/user/relly',User.reply);
 };
