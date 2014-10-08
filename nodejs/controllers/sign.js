@@ -1,15 +1,16 @@
 /**
  * Created by 孙艺峰 on 2014/9/30 0030.
  */
-var signDao=require('../model/Sign');
-function add(req,res)
-{
+
+var signDao = require('../proxy').Sign;
+
+exports.add = function(req,res){
     var userid=req.query.userid;
     signDao.add(userid);
     res.send('add');
-}
-function list(req,res)
-{
+};
+
+exports.list = function(req,res){
     var year=req.query.year;
     var month=req.query.month;
     var userid=req.query.userid;
@@ -21,6 +22,4 @@ function list(req,res)
         res.send(docs);
     }
     );
-}
-exports.add=add;
-exports.list=list;
+};
