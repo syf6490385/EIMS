@@ -4,10 +4,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var moment = require('../utility/moment');
+//var moment = require('../utility/moment');
 var SignSchema = new Schema({
-    userid:String,
-    username:String,
+    userid:     String,
+    username:   String,
     time:{type:Date,default:Date.now()}
 });
 mongoose.model('Sign',SignSchema);

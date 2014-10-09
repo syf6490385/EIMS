@@ -3,9 +3,9 @@
  */
 
 var Dayoff = require('../models').Dayoff;
-var userDao = require('./user');
 
-exports.add = function(userid,content,length,dayofftime)
+
+exports.add = function(userid, username, content, length, dayofftime, callback)
 {
     var dayoff = new Dayoff();
     dayoff.userid = userid;
@@ -13,19 +13,8 @@ exports.add = function(userid,content,length,dayofftime)
     dayoff.length = length;
     dayoff.result = 0;
     dayoff.dayofftime = dayofftime;
-    userDao.findByid(userid,function(err,docs)
-    {
-        dayoff.username = docs[0].name;
-        console.log(dayoff.username);
-        dayoff.save(function(err)
-        {
-            if(!err){
-                console.log('请假保存成功');
-            } else {
-                console.log(err);
-            }
-        });
-    });
+    dayoff.username = username;
+    dayoff.save(callback);
 };
 
 exports.reply = function(dayoffid, userid, content, result)

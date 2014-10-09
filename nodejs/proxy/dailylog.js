@@ -3,28 +3,18 @@
  */
 
 var Dailylog = require('../models').Dailylog;
-var userDao = require('./user');
+var userDao = require('../models').User;
 
-exports.add = function(userid,content,selfrate)
+exports.add = function(userid, content, selfrate, callback)
 {
     var newDailylog = new Dailylog();
     newDailylog.userid = userid;
     newDailylog.content = content;
     newDailylog.selfrate = selfrate;
-    newDailylog.save(function(err)
-        {
-            if(!err)
-            {
-                console.log('save dailylog!');
-            }
-            else
-            {
-                console.log('save dailylog failed!');
-            }
-        }
-    )
-}
-exports.reply = function(dailylogid,userid,reply,rate)
+    newDailylog.save(callback);
+};
+
+exports.reply = function(dailylogid, userid, reply, rate)
 {
     userDao.findByid(userid,function(err,docs){
         var update = {$set:{replyid:userid,reply:reply,replyrate:rate,replyname:docs[0].name,replytime:Date.now()}};
@@ -40,7 +30,8 @@ exports.reply = function(dailylogid,userid,reply,rate)
             }
         });
     });
-}
+};
+
 exports.list = function(year,month,userid,callback)
 {
     var start = new Date(year,month,1);
@@ -50,5 +41,5 @@ exports.list = function(year,month,userid,callback)
         userid: userid,
         time: {$gt: start, $lt: end}
     };
-    Dailylog.find(conditions,callback);
-}
+    Dailylog.find(conditions, callback);
+};

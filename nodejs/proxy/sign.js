@@ -5,19 +5,11 @@
 var Sign = require('../models').Sign;
 var userDao = require('./user');
 
-exports.add = function(userid){
-    userDao.findByid(userid,function(err,docs){
-        var sign = new Sign();
-        sign.userid = userid;
-        sign.username = docs[0].name;
-        sign.save(function(err){
-            if(!err){
-                console.log('签到保存正常,签到内容为'+sign);
-            } else {
-                console.log('签到保存失败');
-            }
-        });
-    });
+exports.add = function(userid, name, callback){
+    var sign = new Sign();
+    sign.userid = userid;
+    sign.username = name;
+    sign.save(callback);
 };
 
 exports.list = function(userid,year,month,callback){

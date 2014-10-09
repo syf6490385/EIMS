@@ -3,14 +3,26 @@
  */
 
 var dayoffDao = require('../proxy').Dayoff;
+var userDao = require('../proxy').User;
 
 exports.add = function(req,res){
     var userid = req.query.userid;
     var content = req.query.content;
     var length = req.query.length;
     var dayofftime = req.query.dayofftime;
-    dayoffDao.add(userid,content,length,dayofftime);
-    res.send('add');
+    userDao.findByid(userid, function(err,docs){
+        var username = docs[0].name;
+        console.log(username);
+        dayoffDao.add(userid, username, content, length, dayofftime, function(err)
+        {
+            if(!err){
+                console.log('请假保存成功');
+                res.send('add');
+            } else {
+                console.log(err);
+            }
+        });
+    });
 };
 
 exports.reply = function(req,res){

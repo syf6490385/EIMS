@@ -6,20 +6,15 @@ var User =  require('../models').User;
 exports.findByid=function(id,callback){
     var conditions={_id:id};
     User.find(conditions,callback);
-}
-exports.add = function(name,age,pwd,lv){
+};
+
+exports.add = function(name, age, pwd, lv, callback){
     var newUser = new User();
     newUser.name = name;
     newUser.age = age;
     newUser.pwd = pwd;
     newUser.lv = lv;
-    newUser.save(function(err){
-        if(!err)        {
-            console.log('save user!');
-        } else {
-            console.log('save user failed!');
-        }
-    });
+    newUser.save(callback);
 };
 
 exports.list=function(callback){

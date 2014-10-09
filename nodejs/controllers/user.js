@@ -8,9 +8,20 @@ exports.add = function(req,res){
     var name = req.query.name;
     var age = req.query.age;
     var pwd = req.query.pwd;
-    var lv = req.query.lv;
-    userDao.add(name,age,pwd,lv);
-    res.send({result:'ok'});;
+    var lv = parseInt(req.query.lv);
+    if(lv < 1 || lv > 3){
+        console.log("lv is invalid!");
+        res.send({result:'error'});
+    } else {
+        userDao.add(name, age, pwd, lv, function (err) {
+            if (!err) {
+                console.log('save user!');
+                res.send({result: 'ok'});
+            } else {
+                console.log('save user failed!');
+            }
+        });
+    }
 };
 
 exports.list = function(req,res){
@@ -38,9 +49,9 @@ exports.edit = function(req,res){
             console.log("update failed"+error);
         } else {
             console.log('update ok!');
+            res.send({result:'ok'});;
         }
     });
-    res.send({result:'ok'});;
 };
 
 exports.login = function(req,res){
