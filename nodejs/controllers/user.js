@@ -5,12 +5,23 @@
 var userDao = require('../proxy').User;
 
 exports.add = function(req,res){
-    var name=req.query.name;
-    var age=req.query.age;
-    var pwd=req.query.pwd;
-    var lv=req.query.lv;
-    userDao.add(name,age,pwd,lv);
-    res.send({result:'ok'});;
+    var name = req.query.name;
+    var age = req.query.age;
+    var pwd = req.query.pwd;
+    var lv = parseInt(req.query.lv);
+    if(lv < 1 || lv > 3){
+        console.log("lv is invalid!");
+        res.send({result:'error'});
+    } else {
+        userDao.add(name, age, pwd, lv, function (err) {
+            if (!err) {
+                console.log('save user!');
+                res.send({result: 'ok'});
+            } else {
+                console.log('save user failed!');
+            }
+        });
+    }
 };
 
 exports.list = function(req,res){
@@ -22,24 +33,30 @@ exports.list = function(req,res){
 };
 
 exports.del = function(req,res){
-    var id=req.query.id;
+    var id = req.query.id;
     userDao.del(id);
     res.send({result:'ok'});;
 };
 
 exports.edit = function(req,res){
-    var id=req.query.id;
-    var newname=req.query.newname;
-    var age=req.query.age;
-    var pwd=req.query.pwd;
-    var lv=req.query.lv;
-    userDao.edit(id,newname,age,pwd,lv);
-    res.send({result:'ok'});;
+    var id = req.query.id;
+    var newname = req.query.newname;
+    var age = req.query.age;
+    var pwd = req.query.pwd;
+    var lv = req.query.lv;
+    userDao.edit(id,newname,age,pwd,lv,function(error){
+        if(error) {
+            console.log("update failed"+error);
+        } else {
+            console.log('update ok!');
+            res.send({result:'ok'});;
+        }
+    });
 };
 
 exports.login = function(req,res){
-    var name=req.query.name;
-    var pwd=req.query.pwd;
+    var name = req.query.name;
+    var pwd = req.query.pwd;
     userDao.login(name,pwd,function(err,docs){
         if (docs&&docs.length>0){
             res.send(docs[0]._id);

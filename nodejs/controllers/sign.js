@@ -3,23 +3,34 @@
  */
 
 var signDao = require('../proxy').Sign;
+var userDao = require('../proxy').User;
 
 exports.add = function(req,res){
-    var userid=req.query.userid;
-    signDao.add(userid);
-    res.send('add');
+    var userid = req.query.userid;
+    userDao.findByid(userid, function(err,docs){
+        if(err){
+            console.error("err");
+        } else {
+            var name = docs[0].name;
+            signDao.add(userid, name, function(err){
+                if(!err){
+                    console.log('签到保存正常');
+                    res.send('add');
+                } else {
+                    console.log('签到保存失败');
+                }
+            });
+        }
+    });
 };
 
 exports.list = function(req,res){
-    var year=req.query.year;
-    var month=req.query.month;
-    var userid=req.query.userid;
-    var m=parseInt(month);
-    m=m-1;
-    console.log('month is'+m);
-    signDao.list(userid,year,m,function(err,docs)
-    {
+    var year = req.query.year;
+    var month = parseInt(req.query.month);
+    var userid = req.query.userid;
+    month = month - 1;
+    console.log('month is' + month);
+    signDao.list(userid, year, month, function(err,docs){
         res.send(docs);
-    }
-    );
+    });
 };

@@ -1,8 +1,8 @@
 /**
  * Created by 孙艺峰 on 2014/9/29 0029.
  */
-var mongoose=require('mongoose');
-var Schema=mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var DailylogScheme=new Schema({
     content:String,

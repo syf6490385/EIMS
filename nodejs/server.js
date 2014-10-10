@@ -1,12 +1,12 @@
 /**
  * Created by 孙艺峰 on 2014/9/28 0028.
  */
-var http=require('http');
-var express=require('express');
+var http = require('http');
+var express = require('express');
 var config = require('./config');
 var routes = require('./routes');
 
-var app=express();
+var app = express();
 
 // all environments
 app.set('port', process.env.PORT || config.port);
