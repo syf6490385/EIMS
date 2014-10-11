@@ -1,60 +1,171 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.csoft.employeemanager.activity.DayoffActivity" >
-    <RelativeLayout android:id="@+id/top_dayoff"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_alignParentTop="true">
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="5dp"
+    tools:context="com.csoft.activity.DayoffActivity" >
 
-        <Button
-            android:id="@+id/dialog_employee_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="提交请假" />
-
-        <EditText
-            android:id="@+id/emp_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/dialog_employee_confirm"
-            android:layout_alignBottom="@+id/dialog_employee_confirm"
-            android:layout_alignParentLeft="true"
-            android:ems="10"
-            android:hint="请假事项写在这里"
-            android:inputType="textMultiLine" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <TextView
+        android:id="@+id/main_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/top_dayoff" >
+        android:layout_alignParentTop="true"
+        android:text="请假:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/item_employee_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text="请假记录"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+    <EditText
+        android:id="@+id/dialog_group_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_username"
+        android:layout_toRightOf="@+id/main_username"
+        android:ems="15"
+        android:singleLine="true"
+        android:hint="请假事项写在这里"
+         />
 
-        <ListView
-            android:id="@+id/listView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/item_employee_name"
-            android:layout_centerHorizontal="true" >
+    <TextView
+        android:id="@+id/main_userlv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dialog_group_name"
+        android:text="请假起始:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        </ListView>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/dayoff_endtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_dayofftime"
+        android:layout_toRightOf="@+id/main_username"
+        android:inputType="none"
+        android:onClick="end_click"
+        
+        bootstrapbutton:bb_roundedCorners="true"
+             bootstrapbutton:bb_size="default"
+             bootstrapbutton:bb_type="info"
+        android:text="结束日期" >
+    </com.beardedhen.androidbootstrap.BootstrapButton>
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/daily_replycontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dayoff_endtime"
+        android:text="时长:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/dayoff_starttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dayoff_endtime"
+        android:layout_below="@+id/main_userlv"
+        android:inputType="none"
+        android:text="起始日期"
+        android:onClick="start_click"
+        bootstrapbutton:bb_roundedCorners="true"
+             bootstrapbutton:bb_size="default"
+             bootstrapbutton:bb_type="info"
+         >
+
+         
+    </com.beardedhen.androidbootstrap.BootstrapButton>
+
+    <TextView
+        android:id="@+id/item_dayofftime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dayoff_starttime"
+        android:text="请假截止:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/dayoff_starthour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dayoff_starttime"
+        android:layout_toRightOf="@+id/dayoff_starttime"
+        android:onClick="startHour"
+        bootstrapbutton:bb_roundedCorners="true"
+             bootstrapbutton:bb_size="default"
+             bootstrapbutton:bb_type="info"
+             android:layout_marginLeft="5dp"
+        android:text="起始时间" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/dayoff_endhour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dayoff_endtime"
+        android:layout_toRightOf="@+id/dayoff_endtime"
+        android:onClick="endHour"
+        android:layout_marginLeft="5dp"
+        bootstrapbutton:bb_roundedCorners="true"
+             bootstrapbutton:bb_size="default"
+             bootstrapbutton:bb_type="info"
+        android:text="结束时间" />
+
+    <TextView
+        android:id="@+id/dayoff_length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/daily_replycontent"
+        android:layout_alignBottom="@+id/daily_replycontent"
+        android:layout_alignLeft="@+id/dayoff_endtime"
+        android:text="5天"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="22sp" />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/layout_drawable"
+    android:layout_below="@+id/group_editgroupbtn" >
+
+    <TextView
+        android:id="@+id/item_employee_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dayoff_listview"
+        android:text="历史请假记录:"
+        android:textColor="@color/blue"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <ListView
+        android:id="@+id/dayoff_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:scrollbars="none"
+        
+        android:divider="#E3E0D5"
+        android:layout_below="@+id/item_employee_group" >
+
+    </ListView>
+</RelativeLayout>
+    
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/group_editgroupbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dayoff_length"
+        android:layout_centerHorizontal="true"
+        android:onClick="dayoff"
+        bootstrapbutton:bb_roundedCorners="true"
+             bootstrapbutton:bb_size="default"
+             bootstrapbutton:bb_type="primary"
+        android:text="提交请假" />
+
+    
 
 </RelativeLayout>

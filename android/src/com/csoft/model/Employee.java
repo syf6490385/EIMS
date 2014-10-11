@@ -5,6 +5,7 @@ import org.json.JSONObject;
 public class Employee 
 {
 	String name,pwd,id;
+	String groupid,groupname;
 	int age,lv;
 	public Employee()
 	{}
@@ -15,6 +16,8 @@ public class Employee
 		age=obj.optInt("age");
 		lv=obj.optInt("lv");
 		id=obj.optString("_id");
+		groupid=obj.optString("groupid");
+		groupname=obj.optString("groupname");
 	}
 	public String getName() {
 		return name;
@@ -46,6 +49,19 @@ public class Employee
 	public void setLv(int lv) {
 		this.lv = lv;
 	}
+	public String getGroupid() {
+		return groupid;
+	}
+	public void setGroupid(String groupid) {
+		this.groupid = groupid;
+	}
+	public String getGroupname() {
+		return groupname;
+	}
+	public void setGroupname(String groupname) {
+		this.groupname = groupname;
+	}
+	
 	
 
 }

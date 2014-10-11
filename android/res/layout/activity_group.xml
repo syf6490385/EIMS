@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.csoft.activity.EmployeeManagerActivity" >
+
+    <com.csoft.swipemenulistview.SwipeMenuListView
+        android:id="@+id/group_swipmenulistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/group_editgroupbtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+   </com.csoft.swipemenulistview.SwipeMenuListView>
+
+    <Button
+        android:id="@+id/group_uploadgroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="addGroup"
+        android:text="新建员工组" />
+
+
+</RelativeLayout>

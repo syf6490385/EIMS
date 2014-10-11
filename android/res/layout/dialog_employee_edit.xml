@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_width="300dp"
+    android:layout_height="300dp" >
 
      <EditText
-         android:id="@+id/emp_name"
+         android:id="@+id/dialog_group_name"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"
@@ -58,8 +58,8 @@
          android:id="@+id/emp_lv"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_alignRight="@+id/emp_name"
-         android:layout_below="@+id/emp_name"
+         android:layout_alignRight="@+id/dialog_group_name"
+         android:layout_below="@+id/dialog_group_name"
          android:layout_toRightOf="@+id/dialog_employee_pwd"
          android:ems="10" />
 
@@ -90,16 +90,8 @@
          android:layout_below="@+id/emp_pwd_confirm"
          android:ems="10" />
 
-     <Button
-         android:id="@+id/dialog_employee_confirm"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/emp_age"
-         android:layout_centerHorizontal="true"
-         android:text="提交" />
-
      <TextView
-         android:id="@+id/textView1"
+         android:id="@+id/main_username"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignBaseline="@+id/emp_age"
@@ -107,5 +99,30 @@
          android:layout_alignParentLeft="true"
          android:text="年龄:"
          android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <Button
+         android:id="@+id/group_editgroupbtn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:text="提交" />
+
+     <TextView
+         android:id="@+id/item_employee_group"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/emp_age"
+         android:text="分组:"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <Button
+         android:id="@+id/employee_dialog_groupchoosebtn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/emp_age"
+         android:layout_alignTop="@+id/item_employee_group"
+         android:text="选择分组" />
 
 </RelativeLayout>

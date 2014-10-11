@@ -1,74 +1,64 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/login_bg"
     android:layout_height="match_parent"
-    tools:context="com.csoft.employeemanager.activity.LoginActivity" >
-     <RelativeLayout 
-         android:id="@+id/login_top"
-         android:layout_width="match_parent"
-         android:layout_height="300dp" 
-         android:layout_alignParentTop="true">
+    tools:context="com.csoft.activity.LoginActivity" >
 
-         <TextView
-             android:id="@+id/textView3"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_centerHorizontal="true"
-             android:layout_centerVertical="true"
-             android:text="员工管理系统"
-             android:textAppearance="?android:attr/textAppearanceLarge" />
+    <RelativeLayout
+        android:id="@+id/login_top"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true" >
 
-     </RelativeLayout>
+    </RelativeLayout>
 
-     <RelativeLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/login_top"
-         android:layout_centerHorizontal="true" >
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/dialog_daily_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:onClick="login"
+        android:text="      登录      "
+         bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="primary"
+        >
+    </com.beardedhen.androidbootstrap.BootstrapButton>
 
-         <EditText
-             android:id="@+id/login_name"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentTop="true"
-             android:layout_toRightOf="@+id/textView1"
-             android:ems="10" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_top"
+        android:layout_centerHorizontal="true" >
 
-         <TextView
-             android:id="@+id/textView1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignBottom="@+id/login_name"
-             android:layout_alignParentLeft="true"
-             android:text="姓名:"
-             android:textAppearance="?android:attr/textAppearanceLarge" />
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/login_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:singleLine="true"
+            android:hint="用户名" />
 
-         <EditText
-             android:id="@+id/login_pwd"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignLeft="@+id/login_name"
-             android:layout_below="@+id/login_name"
-             android:ems="10" />
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/login_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/login_name"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:hint="密码" />
 
-         <TextView
-             android:id="@+id/textView2"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignBaseline="@+id/login_pwd"
-             android:layout_alignBottom="@+id/login_pwd"
-             android:layout_alignParentLeft="true"
-             android:text="密码:"
-             android:textAppearance="?android:attr/textAppearanceLarge" />
-     </RelativeLayout>
-
-     <Button
-         android:id="@+id/button1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentBottom="true"
-         android:layout_centerHorizontal="true"
-         android:onClick="login"
-         android:text="登录" />
+    </RelativeLayout>
 
 </RelativeLayout>

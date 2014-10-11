@@ -53,6 +53,7 @@ public class EmployeeAdapter extends BaseAdapter
 			holder.lv=(TextView) convertView.findViewById(R.id.item_employee_lv);
 			holder.name=(TextView) convertView.findViewById(R.id.item_employee_name);
 			holder.pwd=(TextView) convertView.findViewById(R.id.item_employee_pwd);
+			holder.group=(TextView) convertView.findViewById(R.id.item_employee_group);
 			convertView.setTag(holder); 
 		}
 		else
@@ -61,13 +62,14 @@ public class EmployeeAdapter extends BaseAdapter
 		}
 		Employee emp=data.get(data.size()-position-1);
 		holder.lv.setText("¼¶±ð:"+String.valueOf(emp.getLv()));
-		holder.name.setText("ÐÕÃû:"+emp.getName());
+		holder.name.setText(""+emp.getName());
 		holder.pwd.setText("ÃÜÂë"+emp.getPwd());
+		holder.group.setText(emp.getGroupname());
 		return convertView;
 	}
 	static class ViewHolder
 	{
-		public TextView name,lv,pwd;
+		public TextView name,lv,pwd,group;
 	}
 	
 

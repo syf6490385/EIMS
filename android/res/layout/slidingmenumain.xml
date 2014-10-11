@@ -1,41 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.csoft.slidingmenu.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slidingmenumain"
     android:layout_width="fill_parent"
+    android:background="@drawable/main_top"
     android:layout_height="fill_parent" >
 
-    <Button
-        android:id="@+id/dialog_employee_confirm"
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/dayoff_endhour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:onClick="dayoff"
-        android:text="请假" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/dialog_employee_confirm"
+        android:layout_below="@+id/group_editgroupbtn"
         android:onClick="employeeManager"
-        android:text="员工管理" />
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="info"
+        android:text="员工管理" >
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button2"
-        android:text="关于" />
-    <Button
+    </com.beardedhen.androidbootstrap.BootstrapButton>
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/button3"
         android:onClick="logout"
-        android:text="注销" />
+        android:layout_marginTop="5dp"
+        bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="warning"
+                android:layout_marginLeft="10dp"
+        android:text="注销用户" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/employee_dialog_groupchoosebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dayoff_endhour"
+        android:onClick="groupManager"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="info"
+        android:text="分组管理" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="about"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/employee_dialog_groupchoosebtn"
+        bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="info"
+                android:layout_marginLeft="10dp"
+        android:text="关于软件" />
+    
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="诚创科技"
+        android:textColor="#3B90C9"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/group_editgroupbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:onClick="replyAll"
+        android:text="事项批复"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        bootstrapbutton:bb_roundedCorners="true"
+        bootstrapbutton:bb_size="default"
+        bootstrapbutton:bb_type="info" >
+    </com.beardedhen.androidbootstrap.BootstrapButton>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/csoft" />
 
 </com.csoft.slidingmenu.SlidingMenu>

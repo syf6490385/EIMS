@@ -57,7 +57,8 @@ public class CalendarGridView extends ViewGroup {
   }
 
   @Override public void addView(View child, int index, ViewGroup.LayoutParams params) {
-    if (getChildCount() == 0) {
+    if (getChildCount() == 0) 
+    {
       ((CalendarRowView) child).setIsHeaderRow(true);
     }
     super.addView(child, index, params);

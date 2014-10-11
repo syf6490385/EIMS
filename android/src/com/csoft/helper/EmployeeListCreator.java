@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.TypedValue;
+
+import com.csoft.employeemanager.R;
 import com.csoft.swipemenulistview.SwipeMenu;
 import com.csoft.swipemenulistview.SwipeMenuCreator;
 import com.csoft.swipemenulistview.SwipeMenuItem;
@@ -19,7 +21,7 @@ public class EmployeeListCreator implements SwipeMenuCreator
 	public void create(SwipeMenu menu) 
 	{
 		SwipeMenuItem openItem = new SwipeMenuItem(context.getApplicationContext());
-		openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,0xCE)));
+		openItem.setBackground(R.color.blue);
 		openItem.setWidth(dp2px(90));
 		openItem.setTitle("±à¼­");
 		openItem.setTitleSize(18);

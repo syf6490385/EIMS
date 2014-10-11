@@ -1,31 +1,6 @@
 // Copyright 2012 Square, Inc.
 package com.csoft.calendarview;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import com.csoft.calendarview.MonthCellDescriptor.RangeState;
-import com.csoft.employeemanager.R;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.text.DateFormatSymbols;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 import static java.util.Calendar.DATE;
 import static java.util.Calendar.DAY_OF_MONTH;
 import static java.util.Calendar.DAY_OF_WEEK;
@@ -35,6 +10,33 @@ import static java.util.Calendar.MINUTE;
 import static java.util.Calendar.MONTH;
 import static java.util.Calendar.SECOND;
 import static java.util.Calendar.YEAR;
+
+import java.text.DateFormat;
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.csoft.calendarview.MonthCellDescriptor.RangeState;
+import com.csoft.employeemanager.R;
 
 /**
  * Android component to allow picking a date from a calendar view (a list of months).  Must be
@@ -424,12 +426,12 @@ public class CalendarPickerView extends ListView {
       Date clickedDate = cell.getDate();
 
       if (!betweenDates(clickedDate, minCal, maxCal) || !isDateSelectable(clickedDate)) {
-        if (invalidDateListener != null) {
+        if (invalidDateListener != null) 
+        {
           invalidDateListener.onInvalidDateSelected(clickedDate);
         }
       } else {
         boolean wasSelected = doSelectDate(clickedDate, cell);
-
         if (dateListener != null) {
           if (wasSelected) {
             dateListener.onDateSelected(clickedDate);
@@ -680,7 +682,7 @@ public class CalendarPickerView extends ListView {
       return monthView;
     }
   }
-
+  
   List<List<MonthCellDescriptor>> getMonthCells(MonthDescriptor month, Calendar startCal) {
     Calendar cal = Calendar.getInstance(locale);
     cal.setTime(startCal.getTime());
@@ -846,5 +848,27 @@ public class CalendarPickerView extends ListView {
               fullDateFormat.format(maxCal.getTime()));
       Toast.makeText(getContext(), errMessage, Toast.LENGTH_SHORT).show();
     }
+  }
+  
+  public void setCellBackground(int day,int res)
+  {
+	  MonthView layout=(MonthView) getChildAt(0);
+	  layout.getByDay(day).setBackgroundResource(res);
+  }
+  public List<CalendarCellView> getCellList()
+  {
+	  MonthView layout=(MonthView) getChildAt(0);
+	  return layout.getCellList();
+  }
+  public CalendarCellView getCellbyDay(int day)
+  {
+	  MonthView layout=(MonthView) getChildAt(0);
+	  return layout.getByDay(day);
+  }
+  @Override
+  public boolean onInterceptTouchEvent(MotionEvent ev)
+  {
+	  
+	  return false;
   }
 }

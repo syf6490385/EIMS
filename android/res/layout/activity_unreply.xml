@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.csoft.activity.UnreplyActivity" >
+
+    <ListView
+        android:id="@+id/unreply_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/unreply_bottom"
+        android:layout_alignParentLeft="true"
+        android:scrollbars="none"
+        android:background="@drawable/layout_drawable"
+        android:layout_below="@+id/unreply_title" >
+
+    </ListView>
+    <LinearLayout android:id="@+id/unreply_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/dialog_daily_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="unreadDailylog"
+            android:text="未读工作日志" />
+
+        <Button
+            android:id="@+id/dayoff_endhour"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:onClick="unreadDayoff"
+            android:text="未读请假" />
+        
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/unreply_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Large Text"
+        android:textColor="@color/blue"
+        android:textSize="30sp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

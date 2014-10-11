@@ -1,18 +1,25 @@
 package com.csoft.dialog;
 
 
+import java.util.List;
 import java.util.regex.Pattern;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.csoft.conn.Conn;
 import com.csoft.employeemanager.R;
-import com.csoft.employeemanager.conn.Conn;
+import com.csoft.json2obj.Parser;
 import com.csoft.model.Employee;
+import com.csoft.model.Group;
 import com.csoft.util.T;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -26,7 +33,9 @@ public class EmployeeEditDialog extends Dialog
 	EditText pwd;
 	EditText pwd_confirm;
 	EditText age;
-	Button btn;
+	Button btn,groupbtn;
+	String groupid;
+	List<Group> data;
 	onEmployeeDialogListener listener;
 	boolean isCreate;
 	public EmployeeEditDialog(Context context,onEmployeeDialogListener listener)
@@ -49,14 +58,17 @@ public class EmployeeEditDialog extends Dialog
 	public void onCreate(Bundle bundle)
 	{
 		super.onCreate(bundle);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.dialog_employee_edit);
 		dialog=new LoadingDialog(context);
-		name=(EditText) findViewById(R.id.emp_name);
+		name=(EditText) findViewById(R.id.dialog_group_name);
 		lv=(EditText) findViewById(R.id.emp_lv);
 		pwd=(EditText) findViewById(R.id.emp_pwd);
 		pwd_confirm=(EditText) findViewById(R.id.emp_pwd_confirm);
 		age=(EditText) findViewById(R.id.emp_age);
-		btn=(Button) findViewById(R.id.dialog_employee_confirm);
+		btn=(Button) findViewById(R.id.group_editgroupbtn);
+		groupbtn=(Button) findViewById(R.id.employee_dialog_groupchoosebtn);
+		groupbtn.setOnClickListener(new groupListener());
 		//
 		if(!isCreate)
 		{
@@ -67,6 +79,7 @@ public class EmployeeEditDialog extends Dialog
 		pwd_confirm.setHint("请确认新密码");
 		pwd.setText(emp.getPwd());
 		pwd_confirm.setText(emp.getPwd());
+		groupbtn.setText(emp.getGroupname());
 		} else { emp=new Employee();}
 		//
 		btn.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +96,7 @@ public class EmployeeEditDialog extends Dialog
 				emp.setLv(Integer.parseInt(lv.getText().toString()));
 				emp.setAge(Integer.parseInt(age.getText().toString()));
 				emp.setPwd(pwd.getText().toString());
+				emp.setGroupid(groupid);
 				if(!isCreate)
 				{
 				Conn.editEmployee(emp,new AsyncHttpResponseHandler(){
@@ -123,6 +137,25 @@ public class EmployeeEditDialog extends Dialog
 				}
 			}
 		});
+		load();
+	}
+	private void load()
+	{
+		dialog.show();
+		Conn.listGroup(new AsyncHttpResponseHandler(){
+			@Override
+			public void onSuccess(int statusCode,String result)
+			{
+				 dialog.dismiss();
+				 data=Parser.parseGroup(result);
+			}
+			@Override
+		    public void onFailure(Throwable e,String result) 
+			{
+				dialog.dismiss();
+				T.show("failure"+e.getLocalizedMessage());
+		    }
+		});
 	}
     public interface onEmployeeDialogListener
     {
@@ -145,5 +178,43 @@ public class EmployeeEditDialog extends Dialog
     	Pattern pattern = Pattern.compile("[0-9]*"); 
         return pattern.matcher(str).matches();    
     }
+    
+    
+    //this is inner class
+    class groupListener implements View.OnClickListener
+    {
+
+    	@Override
+    	public void onClick(View v) 
+    	{
+    		Builder builder=new AlertDialog.Builder(context).setTitle("选择分组");
+    		final String []charData=new String[data.size()];
+    		for(int i=0;i<data.size();i++)
+    		{
+    			charData[i]=data.get(i).getName();
+    		}
+    		builder.setSingleChoiceItems(charData,0,new DialogInterface.OnClickListener() 
+    		{
+				@Override
+				public void onClick(DialogInterface dialog, int which) 
+				{
+					groupbtn.setText(charData[which]);
+					groupid=data.get(which).getId();
+					dialog.dismiss();
+				}
+			});
+    		builder.show();
+    	}
+    }
+    
+    
+    
+    
+    
+    
 }
+
+
+
+
 

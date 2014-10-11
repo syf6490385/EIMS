@@ -7,10 +7,11 @@
     <string name="invalid_date">Date must be between %1$s and %2$s.</string>
     <string name="month_name_format">MMMM yyyy</string>
     <string name="title_activity_daily_log">DailyLogActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_dayoff">请假</string>
     <string name="title_activity_employee_manager">员工管理</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_add_daily">创建工作日志</string>
+    <string name="title_activity_unreply">UnreplyActivity</string>
+    <string name="title_activity_group">GroupActivity</string>
 
 </resources>

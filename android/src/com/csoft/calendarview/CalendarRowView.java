@@ -1,16 +1,19 @@
 // Copyright 2012 Square, Inc.
 package com.csoft.calendarview;
 
+import static android.view.View.MeasureSpec.AT_MOST;
+import static android.view.View.MeasureSpec.EXACTLY;
+import static android.view.View.MeasureSpec.makeMeasureSpec;
+
+import com.csoft.util.T;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
-
-import static android.view.View.MeasureSpec.AT_MOST;
-import static android.view.View.MeasureSpec.EXACTLY;
-import static android.view.View.MeasureSpec.makeMeasureSpec;
 
 /** TableRow that draws a divider between each cell. To be used with {@link CalendarGridView}. */
 public class CalendarRowView extends ViewGroup implements View.OnClickListener {
@@ -79,6 +82,7 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
     }
   }
 
+  
   public void setCellTextColor(int resId) {
     for (int i = 0; i < getChildCount(); i++) {
       ((TextView) getChildAt(i)).setTextColor(resId);
@@ -86,8 +90,12 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
   }
 
   public void setCellTextColor(ColorStateList colors) {
-    for (int i = 0; i < getChildCount(); i++) {
-      ((TextView) getChildAt(i)).setTextColor(colors);
+    for (int i = 0; i < getChildCount(); i++) 
+    {
+    	//T.show(getChildAt(i).toString());
+    	//TextView t=(TextView) view.getChildAt(0);
+    	//t.setTextColor(colors);
+      ((TextView)getChildAt(i)).setTextColor(colors);
     }
   }
 }

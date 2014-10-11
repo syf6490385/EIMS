@@ -15,6 +15,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
+        android:id="@+id/item_employee_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="39dp"
+        android:text="密码"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
         android:id="@+id/item_employee_lv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,13 +34,13 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/item_employee_pwd"
+        android:id="@+id/item_employee_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="39dp"
-        android:text="密码"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/item_employee_lv"
+        android:text="Small Text"
+        android:layout_marginLeft="10dp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

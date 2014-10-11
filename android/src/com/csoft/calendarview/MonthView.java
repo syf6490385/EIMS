@@ -3,21 +3,28 @@ package com.csoft.calendarview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import com.csoft.employeemanager.R;
+import com.csoft.util.T;
 
-public class MonthView extends LinearLayout {
+public class MonthView extends LinearLayout 
+{
   TextView title;
   CalendarGridView grid;
   private Listener listener;
-
+  List<CalendarCellView> data=new ArrayList<CalendarCellView>();
+  boolean reachTofirst=false;
   public static MonthView create(ViewGroup parent, LayoutInflater inflater,
       DateFormat weekdayNameFormat, Listener listener, Calendar today, int dividerColor,
       int dayBackgroundResId, int dayTextColorResId, int titleTextColor, int headerTextColor) {
@@ -71,12 +78,25 @@ public class MonthView extends LinearLayout {
         List<MonthCellDescriptor> week = cells.get(i);
         for (int c = 0; c < week.size(); c++) {
           MonthCellDescriptor cell = week.get(c);
+          //FrameLayout layout=(FrameLayout) weekRow.getChildAt(c);
+         // CalendarCellView cellView=(CalendarCellView) layout.getChildAt(0);
           CalendarCellView cellView = (CalendarCellView) weekRow.getChildAt(c);
-
+         
           cellView.setText(Integer.toString(cell.getValue()));
           cellView.setEnabled(cell.isCurrentMonth());
           cellView.setClickable(!displayOnly);
-
+          
+          if(cell.getValue()==1) reachTofirst=!reachTofirst;
+          if(reachTofirst)
+          {
+        	  data.add(cellView);
+          }
+          //
+          //secret is here
+         /* BadgerImageView bdimg=new BadgerImageView(cellView.getContext(),cellView);
+          bdimg.setImageResource(R.drawable.right);
+          bdimg.show();*/
+           
           cellView.setSelectable(cell.isSelectable());
           cellView.setSelected(cell.isSelected());
           cellView.setCurrentMonth(cell.isCurrentMonth());
@@ -114,5 +134,13 @@ public class MonthView extends LinearLayout {
 
   public interface Listener {
     void handleClick(MonthCellDescriptor cell);
+  }
+  public List<CalendarCellView> getCellList()
+  {
+	  return data;
+  }
+  public CalendarCellView getByDay(int day)
+  {
+	  return data.get(day-1);
   }
 }
